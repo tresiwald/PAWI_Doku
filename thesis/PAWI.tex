@@ -8,6 +8,7 @@
 %% We use the memoir class because it offers a many easy to use features.
 \documentclass[12pt,a4paper,titlepage]{memoir}
 
+% no book layout now
 \setulmarginsandblock{4cm}{4cm}{*}
 \setlrmarginsandblock{4cm}{4cm}{*}
 
@@ -76,6 +77,10 @@
 %% This MUST be loaded after varioref, which is loaded in 'extrapackages'
 %% above.  We just load it last to be safe.
 \usepackage[linkcolor=black,colorlinks=true,citecolor=black,filecolor=black]{hyperref}
+
+
+%% longtable
+\usepackage{longtable}
 
 %% Document information
 %% ====================

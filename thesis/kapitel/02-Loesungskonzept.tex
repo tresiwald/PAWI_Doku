@@ -35,74 +35,45 @@ Für die weitere Unterteilung in Arbeitspakete und Stories, werden die Anforderu
 
 \begin{table}
   \centering
-  \begin{tabular}{|p{0.6cm} | p{1.6cm} | p{8cm}|}
+  \begin{tabular}{|p{1.1cm} | p{1.6cm} | p{8cm}|}
   \hline
     ID & Priorität & Beschreibung \\\hline
-    A1 & X & Die zugrunde liegende Datenbasis kann mittels eines Graphen visualisiert werden. Jener besteht aus Knoten und Kanten, welche gerichtet und beschriftet sind.\\\hline
-    A2 & X & Der zu erarbeitende Prototyp kann bidirektional mit dem \textit{ikc-core}-Prototypen interagieren. Änderungen am \textit{ikc-core} sind in der Visualisierung sichtbar. Es ist jedoch es auch möglich Änderungen direkt in der Visualisierung vorzunehmen.\\\hline
-    A3 & X & Mittels der Visualisierung können die grundlegenden Datenbankoperationen \textit{CREATE}, \textit{READ}, \textit{UPDATE} und \textit{DELETE} (CRUD) direkt auf der Datenbasis des \textit{ikc-core} angewendet werden.\\\hline
-    A4 & X & Der Prototyp kann auf Smartphones und Tablets benutzt werden.\\\hline
-    A5 & X & Der Prototyp kann auf Laptops und Desktop-Computern benutzt werden.\\\hline    
-    A6 & X & Mit Hilfe verschiedener Kriterien (beispielsweise Kontext oder Nachbarschaft) kann ein Teilgraph visualisiert werden.\\\hline 
-    A7 & X & Die Visualisierung kann in verschiedenen Projekten wiederverwendet werden.\\\hline     
+    A1.1 & X & Die zugrunde liegende Datenbasis kann mittels eines Graphen visualisiert werden. Jener besteht aus Knoten und Kanten, welche gerichtet und beschriftet sind.\\\hline
+    A1.2 & X & Der zu erarbeitende Prototyp kann bidirektional mit dem \textit{ikc-core}-Prototypen interagieren. Änderungen am \textit{ikc-core} sind in der Visualisierung sichtbar. Es ist jedoch es auch möglich Änderungen direkt in der Visualisierung vorzunehmen.\\\hline
+    A1.3 & X & Mittels der Visualisierung können die grundlegenden Datenbankoperationen \textit{CREATE}, \textit{READ}, \textit{UPDATE} und \textit{DELETE} (CRUD) direkt auf der Datenbasis des \textit{ikc-core} angewendet werden.\\\hline
+    A1.4 & X & Der Prototyp kann auf Smartphones und Tablets benutzt werden.\\\hline
+    A1.5 & X & Der Prototyp kann auf Laptops und Desktop-Computern benutzt werden.\\\hline    
+    A1.6 & X & Mit Hilfe verschiedener Kriterien (beispielsweise Kontext oder Nachbarschaft) kann ein Teilgraph visualisiert werden.\\\hline 
+    A1.61 & X & Diese Teilgraphen (Sichten) können unabhängig von der Datenbasis persistiert werden. Es können, zusätzlich zu den Knoten und Kanten, auch deren relative Positionen in der Visualisierung gespeichert werden.\\\hline 
+    A1.7 & X & Der Prototyp kann (unter anderem) mit Drag and Drop bedient werden.\\\hline
+    A1.71 & X & Ein mittels Drag and Drop erstellter Knoten kann direkt mit einen im Diagramm bestehenden Knoten verknüft werden. Diese Verknüpfung ist standardmässig bidirektional und unbeschriftet (unlabeled).\\\hline
+    A1.72 & X & Ein, im bestehenden User-Interface, mittels der Suche gefundener Knoten kann per Drag and Drop direkt in die Visualisierung übernommen werden.\\\hline 
+    A1.8 & X & Die Visualisierung kann innerhalb der bestehenden \textit{ikc-core} Oberfläche genutzt werden.\\\hline 
+    A1.9 & X & In der Visualisierung könnnen auch Knoten mit mehr als sieben Kindknoten dargestellt werden. Möglicher Ansatz: Sind mehr als sieben Kindknoten vorhanden, kann anstelle einer Repräsentation jedes einzelnen Knotens auf eine Liste gewechselt werden. Diese Liste kann zusätzlich mit einer Such- und oder Filterfunktion versehen werden.\\\hline     
      
   \end{tabular}
     \caption{Funktionale Anforderungen}
   \label{tab:funktionale-anforderungen}
 \end{table}
 
-\begin{enumerate}
-    \item Die zugrunde liegende Datenbasis kann mittels eines Graphen visualisiert werden. Jener besteht aus Knoten und Kanten, welche gerichtet und beschriftet sind.
-    \item Der zu erarbeitende Prototyp kann bidirektional mit dem \textit{ikc-core}-Prototypen interagieren. Änderungen am \textit{ikc-core} sind in der Visualisierung sichtbar. Es ist jedoch es auch möglich Änderungen direkt in der Visualisierung vorzunehmen.
-    \item Mittels der Visualisierung können die grundlegenden Datenbankoperationen \textit{CREATE}, \textit{READ}, \textit{UPDATE} und \textit{DELETE} (CRUD) direkt auf der Datenbasis des \textit{ikc-core} angewendet werden.
-    \item Die Entwicklung erfolgt nach dem Ansatz \textit{mobile-first}, was bedeutet, dass absteigend nach der Priorität die Darstellung für die folgenden Plattformen, Mobile, Tablet, Laptop und Desktop, entwickelt wird.
-    \item Der Prototyp kann auf Smartphones und Tablets benutzt werden.
-    \item Der Prototyp kann auf Laptops und Desktop-Computern benutzt werden.
-    \item Mit Hilfe verschiedener Kriterien (beispielsweise Kontext oder Nachbarschaft) kann ein Teilgraph visualisiert werden.
-    \item Die Visualisierung kann in verschiedenen Projekten wiederverwendet werden.
-\end{enumerate}
-
 \subsection{Nicht funktionale Anforderungen}
 
 \begin{table}
   \centering
-  \begin{tabular}{|p{0.4cm} | p{1.3cm} | p{8cm}|}
+  \begin{tabular}{|p{0.9cm} | p{1.6cm} | p{8cm}|}
   \hline
-     ID & Priorität & Beschreibung \\\hline
-     1 & X & Die zugrunde liegende Datenbasis kann mittels eines Graphen visualisiert werden. Jener besteht aus Knoten und Kanten, welche gerichtet und beschriftet sind.\\\hline
-     2 & X & Die zugrunde liegende Datenbasis kann mittels eines Graphen visualisiert werden. Jener besteht aus Knoten und Kanten, welche gerichtet und beschriftet sind.\\\hline
-     
+    ID & Priorität & Beschreibung \\\hline
+    A2.1 & X & Es können Teile des bestehenden \textit{ikc-core} wiederverwendet / erweitert werden (Nachhaltige Entwicklung).\\\hline
+    A2.2 & X & Die Visualisierung kann in verschiedenen Projekten wiederverwendet werden.\\\hline
+    A2.3 & X & Der Prototyp kann direkt mit dem / in den bestehenden \textit{ikc-core} ausgeliefert werden (Deployment).\\\hline
+    A2.4 & X & Die Visualisierung wird in einen \textit{Klon} des bestehenden \textit{ikc-core}-\textit{Repositories} integriert. Ist die Entwicklung abgeschlossen können die beiden Entwicklungsstände \textit{gemerged} werden.\\\hline
+    A2.5 & X & Alle Daten werden lediglich auf Dropbox persistiert.\\\hline
+    A2.2 & X & Es wird eine intuitive, effiziente Bedienung angestrebt. Ein Mass für die Effizienz: $\frac{\text{Taps}}{\text{Zeit}}$\\\hline
+    A2.6 & X & Randbedingungen 180h pro Person\\\hline
+    A2.7 & X & Die Arbeit können in einem Arbeitsjournal, mindestens mit Angaben von Datum, Anzahl Stunden, Arbeitsschritt/Thema, nachverfolgt werden.\\\hline
   \end{tabular}
     \caption{Nicht funktionale Anforderungen}
   \label{tab:nicht-funktionale-anforderungen}
 \end{table}
 
-\begin{enumerate}
-    \item Die Visualisierung kann direkt nahtlos innerhalb des \textit{ikc-core} verwendet werden.
-    \item Bestehende Funktionen (beispielsweise \textit{New Node}, \ldots) können teilweise direkt in der Visualisierung dargestellt werden.
-    \item Der zu entwicklende Prototyp kann zur Verfügung stehende Schnittstellen des \textit{ikc-core} verwenden.
-    \item Der Prototyp kann (unter anderem) mit Drag and Drop bedient werden.
-\end{enumerate}
-
-
 \section{Stories}
-
-\begin{table}
-  \centering
-  \caption{Things you (usually) don't say}
-  \label{tab:things-you-dont-say}
-  \begin{tabular}{lll}
-    \toprule
-    \st{It holds (that) \dots} & We have \dots & \emph{Es gilt \dots}\\
-    \multicolumn{3}{l}{\quad\footnotesize(`Equation (5) holds.' is fine, though.)}\\
-    \st{$x$ fulfills property $\mathcal{P}$.}& \(x\) satisfies property \(\mathcal{P}\). & \emph{\(x\) erfüllt Eigenschaft \(\mathcal{P}\).} \\
-    \st{in average} & on average & \emph{im Durchschnitt}\\
-    \st{estimation} & estimate   & \emph{Abschätzung}\\
-    \st{composed number} & composite number & \emph{zusammengesetzte Zahl}\\
-    \st{with the help of} & using & \emph{mit Hilfe von}\\
-    \st{surely} & clearly & \emph{sicher, bestimmt}\\
-    \st{monotonously increasing} & monotonically incr. & \emph{monoton steigend}\\
-    \multicolumn{3}{l}{\quad\footnotesize(Actually, in most cases `increasing' is just fine.)}\\
-    \bottomrule
-  \end{tabular}
-\end{table}
