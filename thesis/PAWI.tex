@@ -48,6 +48,7 @@
 
 %% LaTeX' own graphics handling
 \usepackage{graphicx}
+\usepackage{lscape}
 
 \graphicspath{ {bilder/} }
 
@@ -106,7 +107,7 @@
 \end{titlingpage}
 
 %% The abstract of your thesis.  Edit the file as needed.
-\input{abstract}
+%\input{abstract}
 
 %% TOC with the proper setup, do not change.
 \cleartorecto
@@ -114,26 +115,24 @@
 \mainmatter
 
 %% Your real content!
-\include{kapitel/01-Einleitung}
+%\include{kapitel/01-Einleitung}
 
-\include{kapitel/02-Loesungskonzept}
+\include{kapitel/02-Projektmanagement}
 
-\include{kapitel/03-Implementation}
+%\include{kapitel/03-Loesungsdesign}
 
-\include{kapitel/04-Schlussfolgerungen}
+%\include{kapitel/04-Implementation}
 
-\include{kapitel/05-Literatur}
-
-\include{kapitel/06-Anhang}
-
-\appendix
-
-\include{appendix}
-
-\backmatter
+%\include{kapitel/05-Schlussfolgerungen}
 
 \bibliographystyle{plain}
 \bibliography{refs}
+
+%\appendix
+
+%\include{appendix}
+
+\backmatter
 
 %\includepdf[pages={-}]{declaration-originality.pdf}
 
