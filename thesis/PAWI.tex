@@ -15,6 +15,16 @@
 %% Packages
 %% ========
 
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+% 
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
 %% LaTeX Font encoding -- DO NOT CHANGE
 \usepackage[OT1]{fontenc}
 
@@ -34,6 +44,7 @@
 %% This changes default fonts for both text and math mode to use Herman Zapfs
 %% excellent Palatino font.  Do not change this.
 \usepackage[sc]{mathpazo}
+\usepackage[natbibapa]{apacite}
 
 %% The AMS-LaTeX extensions for mathematical typesetting.  Do not
 %% remove.
@@ -49,6 +60,10 @@
 %% LaTeX' own graphics handling
 \usepackage{graphicx}
 \usepackage{lscape}
+
+\addto\extrasngerman{\def\figureautorefname{Abbildung}}
+\addto\extrasngerman{\def\sectionautorefname{Abschnitt}}
+\addto\extrasngerman{\def\subsectionautorefname{Unterabschnitt}}
 
 \graphicspath{ {bilder/} }
 
@@ -83,6 +98,12 @@
 %% longtable
 \usepackage{longtable}
 
+%% sourcecode
+\usepackage{minted}
+
+\providecommand*{\listingautorefname}{Listing}
+
+
 %% Document information
 %% ====================
 
@@ -94,6 +115,8 @@
 \date{\today}
 
 \begin{document}
+
+\listoftodos
 
 \frontmatter
 
@@ -119,14 +142,17 @@
 
 \include{kapitel/02-Projektmanagement}
 
-%\include{kapitel/03-Loesungsdesign}
+\include{kapitel/03-Loesungsdesign}
 
 %\include{kapitel/04-Implementation}
 
 %\include{kapitel/05-Schlussfolgerungen}
 
-\bibliographystyle{plain}
+\bibliographystyle{apacite}
 \bibliography{refs}
+
+\renewcommand\listoflistingscaption{Code}
+\listoflistings
 
 %\appendix
 

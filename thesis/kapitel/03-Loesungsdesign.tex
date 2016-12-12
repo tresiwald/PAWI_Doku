@@ -1,9 +1,329 @@
 \chapter{Lösungsdesign}
 
-Das Lösungskonzept beinhaltet die Grundlagen für die erfolgreiche Umsetzung des Prototypen. Der Inhalt ist hauptsächlich aus den Bereich Management und Anforderungen. Die unter Anforderungen aufgenommenen Punkte sind in Zusammenarbeit mit dem Projektpartner entstanden, um so auch die Ansprüche des Forschungsprojektes zu erfüllen.
+Das Lösungsdesign beinhaltet die Grundlagen für die erfolgreiche Umsetzung des Prototypen. Dieses Kapitel beinhaltet die definierten Schnittstellen sowohl die Auswahl des Frameworks für die Darstellung. Ein besonderes Augenmerk wird auf die Interaktion zwischen der Visualisierung und dem \textit{ikc-core} gelegt, besonders auf die reduktion der Kopplung zwischen den beiden Komponenten. 
 
 \section{Technische Ausgangslage}
+Der \textit{ikc-core} funktioniert momentan mit einer puristen Benutzeroberfläche. Die Applikationslogik und der Umgang mit der Datenbasis existieren somit  bereits. Wie auf dem Komponentendiagramm (\autoref{fig:komponentendiagramm}) ersichtlich, nutzt der \textit{ikc-core} die Visualisierung (graph-visualization). Jedoch müssen dazu verschieden Schnittstellen auf der Visualisierung implementiert werden. Diese werden dann von der Visualisierung genutzt um Operation an den \textit{ikc-core} zu delegieren. Dies kann als Nutztungsvertrag zwischen der Visualisierung und dem Komponente welche sie verwendet verstanden werden. Als Beispiel kümmert es die Visualisierung wenig, wie und wo ein Node gespeichert wird. Es wird nur die jeweilige Methode ausgeführt und alles andere geschieht ausserhalb der Visualisierung. Mehr Details sind im \autoref{sec:architektur} zu finden.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{components}
+\caption{Komponentendiagramm}
+\label{fig:komponentendiagramm}
+\end{figure}
+
+\todo[inline]{Diagramm neuzeichnen (vektorisiert)}
+
+\section{Technologie}
+\label{sec:technologie}
+Typescript, React \& Komponenten, Webpack
 
 \section{Architektur}
+\label{sec:architektur}
 
-\section{Schnittstellen}
+Das Klassendiagramm (\autoref{fig:klassendiagramm}) gewährt einen detaillierteren Überblick über die Architektur der Visualisierung. Es zeigt die Schnittstellen zum \textit{ikc-core} und die wichtigsten Komponenten auf.
+
+\todo[inline]{Mehr Details?}
+
+\begin{landscape}
+\todo[inline]{Diagramm neuzeichnen (vektorisiert) und updaten (Signaturen)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.6\textwidth]{architecture-overview}
+\caption{Klassendiagramm}
+\label{fig:klassendiagramm}
+\end{figure}
+\end{landscape}
+
+
+\section{Schnittstellen} \label{schnittstellen}
+
+\improvement[inline]{Ort der Implementierung angeben. --> Unterpackages Core + Visualisierung}
+
+Die hier gezeigten Schnittstellen dienen dem Austausch und der Interaktion mit dem \textit{ikc-core}. Um die Visualisierung in einer bestehenden Umgebung verwenden zu können, müssen die erforderlichen Teile implementiert werden.
+
+\subsection{NodeComponentFactory}
+Mit dem \textit{Factory-Pattern} wird die Objekterzeugung von der tatsächlichen Implementation entkoppelt. Dies wird verwendet um die Komponentenrepräsentationen der Knoten und Kanten auszuliefern (\autoref{lst:nodecomponentfactory}).
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/interfaces/NodeComponentFactory.ts}
+\caption{NodeComponentFactory-Interface}
+\label{lst:nodecomponentfactory}
+\end{listing}
+
+\subsection{NodeInformationProvider}
+Die Visualisierung benötigt zum Darstellen des Netzwerk diverse Informationen zu den einzelnen Knoten und Kanten. Diese werden über die beiden Methoden \texttt{getNodeTitle} und \texttt{getNodeEdgesIds} geliefert. Die Identifikation erfolgt jeweils über eine eindeutige Identifikationsnummmer (\autoref{listing:nodeinformationprovider}).
+
+Teile der Visualisierung sollen mittels \textit{Drag and Drop} bedient werden können. Folgend ein Beispiel, wie die Schnittstelle in diesem Anwendungsfall benutzt werden kann:
+
+Beim \textit{Drag and Drop} wird üblicherweise ein \textit{Event} beim Loslassen des gepackten Elements ausgelöst. Das Element soll eine eindeutige Identifikationsnummer (ID) enthalten. Dies ist aus dem bestehenden \textit{IKC-Core} vorausgesetzt. Wird das Element nun innerhalb der Visualisierung losgelassen, enthält der ausgelöste \textit{Event} so auch diese ID. Diese kann zusammen mit dem \textit{Event} abgefangen und wiederverwendet werden. Beispielsweise können nun Informationen über den \textit{NodeInformationProvider} bezogen werden.
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/interfaces/NodeInformationProvider.ts}
+\caption{NodeInformationProvider-Interface}
+\label{listing:nodeinformationprovider}
+\end{listing}
+
+\subsection{OperationService}
+Die \textit{OperationService}-Schnittstelle ermöglicht der Visualisierung mit der Datenbasis zu interagieren. Wird beispielsweise in der Visualisierung ein neuer Knoten erstellt, muss dieser auch auf der Datenbasis erzeugt werden (\autoref{listing:operationservice}). 
+
+Lesezugriffe erfolgen aber über den zuvor genannten \textit{NodeInformationProvider} (\autoref{listing:nodeinformationprovider}).
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/interfaces/OperationService.ts}
+\caption{OperationService-Interface}
+\label{listing:operationservice}
+\end{listing}
+
+\subsection{View}
+Die \textit{View} ist eine Abstraktion der Visualisierung. Sie hält einerseits Informationen zu der einzelnen Sicht, welche Kanten und Knoten sind sichtbar. Andererseits ermöglichst sie auch das persistieren der Sicht. Dies erfolgt über eine \textit{JSON}-Repräsentation (\autoref{listing:view}).
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/interfaces/View.ts}
+\caption{View-Interface}
+\label{listing:view}
+\end{listing}
+
+\section{Komponenten}\label{komponenten}
+
+Die \textit{React}-Komponenten werden seitens der Visualisierung implementiert. Der \textit{Graphscreen} (\autoref{listing:graphscreen}) beinhaltet hier \textit{DiagramNodes} (\autoref{listing:diagramnode}) und \textit{DiagramEdges} (\autoref{listing:diagramedge}). Für die grafische Repräsentation der verschiedenen Komponenten werden direkt \textit{React}-Komponenten verwendet (vgl. \autoref{sec:technologie}).
+
+\subsection{DiagramEdge}
+Eine Kante wird mithilfe der Komponente \textit{DiagramEdge} dargestellt. Diese hat Eigenschaften wie 
+
+\begin{itemize}
+  \setlength\itemsep{1em}
+    \item \textbf{label}: Allfällige Beschriftung der Kante (Links).
+    \item \textbf{sourceNodeId}: ID des Ursprungsknotens.
+    \item \textbf{destNodeId}: ID des Zielknotens.
+    \item \textbf{direction}: Richtung des Links.
+\end{itemize}
+
+, welche die Kante näher beschreiben (\autoref{listing:diagramedge}). Die Richtung des \textit{Links} ergibt sich aus der Angabe von \textit{Source-} und \textit{DestinationNodeId}.
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/components/DiagramEdgeInterface.tsx}
+\caption{DiamgramEdge-Komponente}
+\label{listing:diagramedge}
+\end{listing}
+
+\subsection{DiagramNode}
+Ähnlich wie die \textit{DiagramEdge} funktioniert die Repräsentation auch bei der \textit{DiagramNode}. Wiederum sind hier Eigenschaften vorgegeben, welche zusätzlich Informationen zum Knoten beinhalten (\autoref{listing:diagramnode}):
+
+\begin{itemize}
+    \item \textit{id}: ID
+    \item \textit{label}: Beschriftung
+    \item \textit{positionX}, \textit{positionY}: Koordinaten
+    \item \textit{detailComponenten}: Kind-Komponente für weitere Informationen
+\end{itemize}
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/components/DiagramNodeInterface.tsx}
+\caption{DiamgramNode-Komponente}
+\label{listing:diagramnode}
+\end{listing}
+
+\subsection{GraphScreen}
+Die \textit{GraphScreen}-Komponente sammelt alle Abhängigkeiten und repräsentiert das Netzwerk als Ganzes. Sie hält alle Referenzen zu Daten, Funktionen sowie zu den umliegenden Komponenten und bildet damit ein wichtiges Bindeglied zwischen \textit{ikc-core} und der Visualisierung. Nachfolgend weitere Informationen zu den Eigenschaften (\autoref{listing:graphscreen}):
+
+\begin{itemize}
+    \item \textit{viewToLoad}: Sicht, welche angezeigt wird.
+    \item \textit{onViewSave}: Funktion, welche zum Speichern der Sicht aufgerufen wird.
+    \item \textit{onViewDelete}: Funktion, welche zum Löschen der Sicht aufgerufen wird.
+    \item \textit{nodeComponentFactory}: \textit{Factory}, welche Knoten und Kanten liefert.
+    \item \textit{nodeInformationProvider}: Stellt Informationen zu Knoten und Kanten zur Verfügung.
+    \item \textit{operationService}: Ermöglicht Interkation mit Datenbasis.
+\end{itemize}
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/common/components/GraphScreenInterface.tsx}
+\caption{GraphScreen-Komponente}
+\label{listing:graphscreen}
+\end{listing}
+
+In \autoref{listing:graphscreenexample} ist ein Beispiel für die Verwendung aufgezeigt. 
+
+\begin{listing}[H]
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+linenos,
+breaklines=true
+]{js}{sourcecode/GraphScreenExample.tsx}
+\caption{GraphScreen-Beispiel}
+\label{listing:graphscreenexample}
+\end{listing}
+
+\section{Framework-Auswahl}
+Um sicherzustellen, dass ein geeignetes \textit{Framework} für die Visualisierung verwendet wird, müssen verschiedenen untersucht und bewertet werden.
+\subsection{Kriterien-Katalog}
+Für die Bewertung wird ein Katalog an Kriterien definiert, welcher sich an den definierten Anforderungen (siehe \autoref{anforderungen}), Risikoanalyse (siehe \autoref{risikoanalyse}), Schnittstellen (siehe \autoref{schnittstellen}) und Komponenten (siehe \autoref{komponenten}) orientiert. Folgend eine Übersicht über den Kriterienkatalog \autoref{tab:kriterien-katalog}. 
+
+Mit Hilfe dieses Katalogs sollen die Möglichkeiten, Chancen und auch Risiken der verschiedenen \textit{Frameworks} identifiziert werden. Aufgrund dieses Prozesses kann anschliessend eine genaue Einschätzung der Möglichkeiten und des Aufwands aufgestellt werden.
+
+\begin{longtable}{|p{1cm}| p{3cm} | p{8.1cm}|}
+  \hline
+    ID & Titel &  Beschreibung \\\hline
+    K1 & Mobile Darstellung & Das Framework kann im Mobile Umfeld verwendet werde\\\hline
+    K2 & Operationen & Es können die folgenden Operationen umgesetzt werden:
+        \begin{enumerate}
+          \item Einen neuen Node innerhalb Visualisierung erstellen.
+          \item Zwei Nodes innerhalb Visualisierung verbinden.
+          \item Einen Node innerhalb der Visualisierung löschen.
+        \end{enumerate} \\\hline
+    K3 & Operationen (D'n'D\footnote{Drag and Drop}) & Es können die folgenden D'n'D-Operationen umgesetzt werden:
+        \begin{enumerate}
+          \item Einen neuen Node mittels Drag'n'Drop innerhalb der Visualisierung erstellen.
+          \item Zwei Nodes innerhalb der Visualisierung mittels Drag'n'Drop verbinden.
+        \end{enumerate} \\\hline
+    K4 & Node Details & Node Details können angezeigt und bearbeitet werden.\\\hline
+    K5 & Menu & Ein Kontextmenü für weitere Operationen anzeigen.\\\hline
+    K6 & Nodes Speichern & Positionen der Nodes können gespeichert werden.\\\hline
+    K7 & Nodes Laden & Eine bestehende View kann dargestellt werden.\\\hline
+    K8 & Toolbox & Weitere Operationen, z.b. Suche, können in einer Toolbox angeboten werden.\\\hline
+    K9 & Komplexität & Allgemeiner Eindruck des Frameworks hinsichtlich der Komplexität.\\\hline
+    K10 & Erweiterbarkeit & Allgemeiner Eindruck des Frameworks hinsichtlich der Erweiterbarkeit.\\\hline
+    K11 & Dokumentation & Das Framework ist gut dokumentiert, es gibt genügend Beispiele und eine entsprechende \textit{Community} zur allfälligen Unterstützung.\\\hline
+    \caption{Kriterienkatalog}
+  \label{tab:kriterien-katalog}
+\end{longtable}
+Mit Hilfe dieses Katalogs sollen die Möglichkeiten, Chancen und auch Risiken der verschiedenen \textit{Frameworks} identifiziert werden. Aufgrund dieses Prozesses kann anschliessend eine genaue Einschätzung der Möglichkeiten und des Aufwands aufgestellt werden. Die verschiedenen  \textit{Frameworks} werden anhand der folgenden Skala bewertet (1-5): 
+\begin{enumerate}
+  \item Die Erfüllung des Kriteriums ist mit diesem Framework ohne Anpassungen möglich.
+  \item Die Erfüllung des Kriteriums ist mit diesem Framework mit leichten Anpassungen möglich.
+  \item Die Erfüllung des Kriteriums ist mit diesem Framework mit Anpassungen möglich.
+  \item Die Erfüllung des Kriteriums ist mit diesem Framework mit grossen Anpassungen möglich.
+  \item Die Erfüllung des Kriteriums ist mit diesem Framework nicht möglich.
+\end{enumerate}
+
+\subsection{Bewertung}
+Aufgrund des definierten Kriterien Kataloges wurden die verschiedenen \textit{Frameworks} nun untersucht und bewertet. Die Ergebnisse sind in der folgender \autoref{tab:framework-auswertung} aufgeführt.
+
+\begin{longtable}{|p{0.8cm}| p{2.2cm} | p{1.5cm}| p{1.5cm}| p{2cm}| p{2cm}|}
+  \hline
+    & \textit{cytoscape.js} & \textit{greuler} &\textit{JointJS} &\textit{jsPlumb} &\textit{mxGraph}  \\\hline
+    Total & 23 & 27 & 38 & &\\\hline
+    \caption{Framework-Auswerung}
+  \label{tab:framework-auswertung}
+\end{longtable}
+\todo[]{Entscheid ausformulieren + bewertung der Framework inkl. kleiner Text + Screenshoot}
+Eine detailierte Bewertung der verschiedenen \textit{Frameworks} kann den Abschnitten entnommen werden.
+
+\subsubsection{\textit{cytoscape.js}}
+\label{cytoscape}
+Cytoscape ist eine \textit{open-source} Javascript Bibliothek für Graphen- oder Netzwerk-Theorie. Sie eignet sich nicht nur für Visualisierungen, sondern auch für Analysen. Cytoscape ist mit allen gängigen Browsern und Bibliotheken kompatibel. Auch funktioniert die Darstellung ohne zusätzlichen Aufwand auf allen Bildschirmgrössen. Es gibt zahlreiche Erweiterungen und auch die Integration in bestehende Lösungen ist einfach möglich. \cite{1_franz_lopes_huck_dong_sumer_bader_2016}
+
+Wie in \autoref{fig:bsp-cytoscape} ersichtlich, beschränkt sich die Bibliothek lediglich auf die Visulisierung von Netzwerken. Standardmässig sind keine Zusatzfunktionen, beispielsweise das Interagieren mit \textit{Nodes} und \textit{Links} möglich. Im Gegenzug ist die Bibliothek sehr schlank gehalten, was eine einfache Integration und Erweiterung stark vereinfacht. Das Netzwerk wird direkt im \textit{JSON}-Format hinterlegt. Sollen Änderungen vorgenommen werde, werden die hinterlegten Daten angepasst und anschliessend angezeigt.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{cytoscape}
+\caption{Beispiel Cytoscape}
+\label{fig:bsp-cytoscape}
+\end{figure}
+
+
+\begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
+  \hline
+    K1 & K2 & K3 & K4 & K5 & K6 & K7 & K8 & K9 & K10 & K11 \\\hline
+    2 & 2 & 2 & 2 & 2 & 2 & 3 & 2 & 2 & 3 & 1\\\hline
+    \caption{Bewertung  \textit{cytoscape.js}}
+  \label{tab:bewertung-cytoscape}
+\end{longtable}
+
+\subsubsection{\textit{greuler}}
+Hier gibt es viele Parallen zur vorgängigen Bibliothek (\autoref{cytoscape}). \textit{Greuler} spezialisert sich nun aber auf die Visualisierung, baut wie viele andere auf \textit{D3}. Bezüglich der Handhabung ist es grösstenteils identisch mit \textit{Cytoscape}, allerdings hat hier es bei weiten nicht so viele Erweiterungsmöglichkeiten. \autoref{fig:bsp-greuler} zeigt ein kleines Beispielnetzwerk. \cite{2_maurizzzio/greuler_2016}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{greuler}
+\caption{Beispiel Greuler}
+\label{fig:bsp-greuler}
+\end{figure}
+
+\begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
+  \hline
+    K1 & K2 & K3 & K4 & K5 & K6 & K7 & K8 & K9 & K10 & K11 \\\hline
+    2 & 2 & 2 & 2 & 2 & 4 & 4 & 2 & 2 & 4 & 3\\\hline
+    \caption{Bewertung \textit{greuler}}
+  \label{tab:bewertung-greuler}
+\end{longtable}
+
+\subsubsection{JointJS}
+Auch bei JointsJS handelt es sich um eine \textit{open-source}-Bibliothek. Im Gegensatz zu den obigen beiden geht die Funktionalität einen Ebene weiter. Hier werden zusätzlich zur eigentlichen Darstellung auch Werkzeuge zur Manipulation des Diagramms mitgeliefert. Viele Funktionalitäten sind aber erst mit der kostenpflichten Version \textit{Rappid} verfügbar, welche auf JointJS aufbaut. \cite{jointsjs}
+
+Die Bibliothek ist für den hier vorliegenden Anwendungsfall zu umfangreich. Die vielen Funktionen machen die Implementation sehr komplex. Dieser Aufwand ist für die eigentliche einfache Anwendung übertrieben. Die Vorteile, welche der vorhandene Funktionsumfang und auch wirklich genutzt werden, können vergleichsweise schnell selbst implementiert werden. So ist die Übersicht stets vorhanden.
+
+\begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
+  \hline
+    K1 & K2 & K3 & K4 & K5 & K6 & K7 & K8 & K9 & K10 & K11 \\\hline
+    1 & 3 & 3 & 3 & 3 & 4 & 4 & 5 & 4 & 5 & 3\\\hline
+    \caption{Bewertung \textit{JointJS}}
+  \label{tab:bewertung-jointjs}
+\end{longtable}
+
+\subsubsection{jsPlumb}
+
+\begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
+  \hline
+    K1 & K2 & K3 & K4 & K5 & K6 & K7 & K8 & K9 & K10 & K11 \\\hline
+    & & & & & & & & & &\\\hline
+    \caption{Bewertung \textit{jsPlumb}}
+  \label{tab:bewertung-jsplumb}
+\end{longtable}
+
+
+\subsubsection{mxGraph}
+
+\begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
+  \hline
+    K1 & K2 & K3 & K4 & K5 & K6 & K7 & K8 & K9 & K10 & K11 \\\hline
+    & & & & & & & & & &\\\hline
+    \caption{Bewertung \textit{mxGraph}}
+  \label{tab:bewertung-mxgraph}
+\end{longtable}
+ 
