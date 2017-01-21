@@ -3,7 +3,7 @@
 Das Lösungsdesign beinhaltet die Grundlagen für die erfolgreiche Umsetzung des Prototypen. Dieses Kapitel beinhaltet die definierten Schnittstellen sowohl die Auswahl des Frameworks für die Darstellung. Ein besonderes Augenmerk wird auf die Interaktion zwischen der Visualisierung und dem \textit{ikc-core} gelegt, besonders auf die reduktion der Kopplung zwischen den beiden Komponenten. 
 
 \section{Technische Ausgangslage}
-Der \textit{ikc-core} funktioniert momentan mit einer puristen Benutzeroberfläche. Die Applikationslogik und der Umgang mit der Datenbasis existieren somit  bereits. Wie auf dem Komponentendiagramm (\autoref{fig:komponentendiagramm}) ersichtlich, nutzt der \textit{ikc-core} die Visualisierung (graph-visualization). Jedoch müssen dazu verschieden Schnittstellen auf der Visualisierung implementiert werden. Diese werden dann von der Visualisierung genutzt um Operation an den \textit{ikc-core} zu delegieren. Dies kann als Nutztungsvertrag zwischen der Visualisierung und dem Komponente welche sie verwendet verstanden werden. Als Beispiel kümmert es die Visualisierung wenig, wie und wo ein Node gespeichert wird. Es wird nur die jeweilige Methode ausgeführt und alles andere geschieht ausserhalb der Visualisierung. Mehr Details sind im \autoref{sec:architektur} zu finden.
+Der \textit{ikc-core} funktioniert momentan mit einer puristischen Benutzeroberfläche. Die Applikationslogik und der Umgang mit der Datenbasis existieren somit  bereits. Wie auf dem Komponentendiagramm (\autoref{fig:komponentendiagramm}) ersichtlich, nutzt der \textit{ikc-core} die Visualisierung (graph-visualization). Jedoch müssen dazu verschieden Schnittstellen auf der Visualisierung implementiert werden. Diese werden dann von der Visualisierung genutzt um Operation an den \textit{ikc-core} zu delegieren. Dies kann als Nutztungsvertrag zwischen der Visualisierung und dem Komponente welche sie verwendet verstanden werden. Als Beispiel kümmert es die Visualisierung wenig, wie und wo ein Node gespeichert wird. Es wird nur die jeweilige Methode ausgeführt und alles andere geschieht ausserhalb der Visualisierung. Mehr Details sind im \autoref{sec:architektur} zu finden.
 
 \begin{figure}[H]
 \centering
@@ -11,12 +11,6 @@ Der \textit{ikc-core} funktioniert momentan mit einer puristen Benutzeroberfläc
 \caption{Komponentendiagramm}
 \label{fig:komponentendiagramm}
 \end{figure}
-
-\todo[inline]{Diagramm neuzeichnen (vektorisiert)}
-
-\section{Technologie}
-\label{sec:technologie}
-Typescript, React \& Komponenten, Webpack
 
 \section{Architektur}
 \label{sec:architektur}
@@ -39,9 +33,23 @@ Das Klassendiagramm (\autoref{fig:klassendiagramm}) gewährt einen detaillierter
 
 \section{Schnittstellen} \label{schnittstellen}
 
-\improvement[inline]{Ort der Implementierung angeben. --> Unterpackages Core + Visualisierung}
-
 Die hier gezeigten Schnittstellen dienen dem Austausch und der Interaktion mit dem \textit{ikc-core}. Um die Visualisierung in einer bestehenden Umgebung verwenden zu können, müssen die erforderlichen Teile implementiert werden.
+
+Die \autoref{fig:integration-ikc-core} zeigt einen Teil einer möglichen Integration, beispielsweise in den bestehenden \textit{ikc-core}. Die rechte Seite stellt einen Ausschnitt des \textit{ikc-visual}-Paketes an. Die Klasse \textit{GraphScreen} (\autoref{GraphScreen}) ist zu\-stä\-ndig für die Visualisierung des Netzwerkes. Um den vollen Funktionsumfang zu bieten, benutzt sie, unter anderem, die Schnittstelle \textit{DialogFactory} (!!!REFERENZ!!!). Diese soll den Umgang mit Dialogfenstern ermöglichen. Da dies zu den grundlegenden Funktionen der Visualisierung zählt, befindet sich diese Schnittstelle direkt im \textit{ikc-visual}-Paket. Bei der Integration der Visualisierung in eine bestehende Umgebung gilt es somit, die verschiedenen Schnittstellen entsprechend zu implementieren.
+
+Die Klasse \textit{GraphVisualisation} verwendet die Klasse \textit{GraphScreen} aus der Visualisierung. Folglich muss beispielsweise die Schnittstelle \textit{DialogFactory} implementiert werden. Dies wird mit der Klasse \textit{GraphDialogFactory} realisiert.
+
+Ähnlich wie beim oben beschriebenen Beispiel gibt es weitere Voraussetzungen des \textit{GraphScreen}, welche bei einer Integration beachtet werden sollten. Diese werden nachfolgenden genau erläutert.
+
+\todo[inline]{Referenzen zu folgenden Unterkapiteln}
+
+Es folgt eine Beschreibung der im \textit{ikc-visual}-Paket enthaltenen Klassen und Schnittstellen. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{architecture}
+\caption{Integration ikc-core}
+\label{fig:integration-ikc-core}
+\end{figure}
 
 \subsection{NodeComponentFactory}
 Mit dem \textit{Factory-Pattern} wird die Objekterzeugung von der tatsächlichen Implementation entkoppelt. Dies wird verwendet um die Komponentenrepräsentationen der Knoten und Kanten auszuliefern (\autoref{lst:nodecomponentfactory}).
@@ -160,7 +168,7 @@ breaklines=true
 \label{listing:diagramnode}
 \end{listing}
 
-\subsection{GraphScreen}
+\subsection{GraphScreen}\label{GraphScreen}
 Die \textit{GraphScreen}-Komponente sammelt alle Abhängigkeiten und repräsentiert das Netzwerk als Ganzes. Sie hält alle Referenzen zu Daten, Funktionen sowie zu den umliegenden Komponenten und bildet damit ein wichtiges Bindeglied zwischen \textit{ikc-core} und der Visualisierung. Nachfolgend weitere Informationen zu den Eigenschaften (\autoref{listing:graphscreen}):
 
 \begin{itemize}
@@ -327,3 +335,4 @@ Die Bibliothek ist für den hier vorliegenden Anwendungsfall zu umfangreich. Die
   \label{tab:bewertung-mxgraph}
 \end{longtable}
  
+ \section{Design}
