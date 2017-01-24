@@ -1,19 +1,48 @@
 \chapter{Implementation}
+
+Die Implementation hat das Ziel die bereits erarbeitete konzeptionelle Lösung in Form von Code praktisch umzusetzen. Nach einer Übersicht über die abgeschlossene Visualisierung, wird nach einem Einblick in die eingesetzten Technologien im Detail auf nennenswerte Eigenheiten des Projektes eingegangen.
+
 \section{Übersicht}
 
-\section{Technologie}
-\label{sec:technologie}
+\todo{screenshot ikc-visual im ikc-core}
+
+\section{Technologie} \label{sec:technologie}
+
+Für die Umsetzung wurde aufgrund vieler Parallelen zum \textit{ikc-core} und diverser guten Erfahrungen auf ähnliche Technologien gesetzt. Das Grundgerüst ist daher nahezu identisch bis dem bisherigen. Dabei konnte viel bereits vorhandenes Wissen wiederverwendet und erweitert werden.
 
 \subsection{Typescript}
 
+Typescript ist eine von Microsoft entwickelte statisch typisierte Erweiterung von Javascript. Durch die Kompilierung wird es zu üblichen Javascript. Typescript kann bereits während des Schreibens überprüft werden und die Entwicklungstools können dadurch viel Hilfestellung bieten. Die Typen sind zwar optional, falls eingesetzt bringen sie aber viele hilfreiche Zusatzfunktionen. Beispielsweise lassen sich Klassen, Interfaces definieren. Dies ist vor allem bei der Entwicklung von grösseren Projekten hilfreich.
+
+\cite{typescriptlang}
+
+Typescript wurde vor allem aufgrund der ein\-fach\-er\-en Struk\-tu\-rie\-rung von Projekten und der Typisierung eingesetzt. Zwar kann jegliche Ja\-va\-scri\-pt-Bibliothek eingesetzt werden, aber ohne bereits vorhandene statische Typisierung in Form von \textit{Typings}, bringt dies keinen grossen Vorteile. Unglücklicherweise sind die Typisierungen noch nicht für alle Bibliotheken verfügbar und darum muss teilweise auf eine weniger elegante Integration ausgewichen werden.
+
 \subsection{React}
 
-\subsection{Stateless / Flux}
+React ist eine Bibliothek für die Entwicklung von Benutzeroberflächen von Facebook. Hoher Wert wird insbesondere auf die Interaktivität der Komponenten gelegt, deren Zustände ständig wechseln können. Bei Zustandsänderungen aktualisiert und rendert React automatisch alle notwendigen Komponenten. Die Komponentenbauweise bringt hohe Modularität und Wiederverwendbarkeit mit sich, untereinander sind die Komponenten entkoppelt. Besonders ist der uni\-di\-rek\-tio\-nale Datenfluss innerhalb React. Dieser wird im \autoref{unidirectional} genauer behandelt.
+
+Interfaces, States und Properties
+
+\cite{reactjs, reactjs-blog}
+
+\subsection[Datenfluss]{Unidirektionaler Datenfluss}\label{unidirectional}
+
+Neben React hat Facebook ebenfalls \textit{Flux}, ein Architektur-Muster, welches optimiert ist für skalierbare Web-Applikationen, vorgestellt.
+
+\subsection{Material Design}
+
+Die React Erweiterung \textit{Material UI} ist zuständig für das Erscheinungsbild der Visualisuerung, wie auch schon beim \textit{ikc-core}. Dafür gibt es diverse vorgefertigte Komponenten, welche praktisch ohne Zusatzaufwand verwendet werden können. Googles Material Design kombiniert klassische Design Prinzipien mit Innovation auf Technik und Wissenschaft. 
+
+\cite{react-material-ui, google-material-ui}
 
 \subsection{Webpack}
 
+Mit der Verwendung von zahlreichen Erweiterungen und Typescript als primäre Programmiersprache ergeben sich diverse Abhängigkeiten und auch ist eine Kompilierung notwendig. Für die Sammlung der Abhängigkeiten und die Übersetzung in Javascript wird Webpack eingesetzt. Das Resultat ist beispielweise eine Javascript-Datei, welches alle Abhängigkeiten im richtigen Format enthält. So ist auf dem Webserver nur eine Datei zu laden, was zusätzlich die Ladezeit verkürzt.
 
-\section{Interaktion mit bestehenden Komponenten}
+\cite{webpack}
+
+\section[Interkation]{Interaktion mit bestehenden Komponenten}
 
 \section{Drag and Drop}
 

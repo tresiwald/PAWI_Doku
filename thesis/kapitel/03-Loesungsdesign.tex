@@ -3,9 +3,9 @@
 Das Lösungsdesign beinhaltet die Grundlagen für die erfolgreiche Umsetzung des Prototypen. Dieses Kapitel beinhaltet die definierten Schnittstellen sowohl die Auswahl des Frameworks für die Darstellung. Ein besonderes Augenmerk wird auf die Interaktion zwischen der Visualisierung und dem \textit{ikc-core} gelegt, besonders auf die reduktion der Kopplung zwischen den beiden Komponenten. 
 
 \section{Technische Ausgangslage}
-Der \textit{ikc-core} funktioniert momentan mit einer puristischen Benutzeroberfläche. Die Applikationslogik und der Umgang mit der Datenbasis existieren somit  bereits. Wie auf dem Komponentendiagramm (\autoref{fig:komponentendiagramm}) ersichtlich, nutzt der \textit{ikc-core} die Visualisierung (graph-visualization). Jedoch müssen dazu verschieden Schnittstellen auf der Visualisierung implementiert werden. Diese werden dann von der Visualisierung genutzt um Operation an den \textit{ikc-core} zu delegieren. Dies kann als Nutztungsvertrag zwischen der Visualisierung und dem Komponente welche sie verwendet verstanden werden. Als Beispiel kümmert es die Visualisierung wenig, wie und wo ein Node gespeichert wird. Es wird nur die jeweilige Methode ausgeführt und alles andere geschieht ausserhalb der Visualisierung. Mehr Details sind im \autoref{sec:architektur} zu finden.
+Der \textit{ikc-core} funktioniert momentan mit einer puristischen Benutzeroberfläche. Die Applikationslogik und der Umgang mit der Datenbasis existieren somit bereits. Wie auf dem Komponentendiagramm (\autoref{fig:komponentendiagramm}) ersichtlich, nutzt der \textit{ikc-core} die Visualisierung (graph-visualization). Jedoch müssen dazu verschieden Schnittstellen auf der Visualisierung implementiert werden. Diese werden dann von der Visualisierung genutzt um Operation an den \textit{ikc-core} zu delegieren. Dies kann als Nutzungsvertrag zwischen der Visualisierung und dem Komponente, welche sie verwendet verstanden werden. Als Beispiel küm\-mert es die Visualisierung wenig, wie und wo ein Node gespeichert wird. Es wird nur die jeweilige Methode ausgeführt und alles andere geschieht ausserhalb der Vi\-su\-ali\-si\-erung. Mehr Details sind im \autoref{sec:architektur} zu finden.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{components}
 \caption{Komponentendiagramm}
@@ -22,7 +22,7 @@ Das Klassendiagramm (\autoref{fig:klassendiagramm}) gewährt einen detaillierter
 \begin{landscape}
 \todo[inline]{Diagramm neuzeichnen (vektorisiert) und updaten (Signaturen)}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=1.6\textwidth]{architecture-overview}
 \caption{Klassendiagramm}
@@ -44,7 +44,7 @@ Die Klasse \textit{GraphVisualisation} verwendet die Klasse \textit{GraphScreen}
 \todo[inline]{Referenzen zu folgenden Unterkapiteln}
 
 Es folgt eine Beschreibung der im \textit{ikc-visual}-Paket enthaltenen Klassen und Schnittstellen. 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{architecture}
 \caption{Integration ikc-core}
@@ -54,7 +54,7 @@ Es folgt eine Beschreibung der im \textit{ikc-visual}-Paket enthaltenen Klassen 
 \subsection{NodeComponentFactory}
 Mit dem \textit{Factory-Pattern} wird die Objekterzeugung von der tatsächlichen Implementation entkoppelt. Dies wird verwendet um die Komponentenrepräsentationen der Knoten und Kanten auszuliefern (\autoref{lst:nodecomponentfactory}).
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -73,7 +73,7 @@ Teile der Visualisierung sollen mittels \textit{Drag and Drop} bedient werden k�
 
 Beim \textit{Drag and Drop} wird üblicherweise ein \textit{Event} beim Loslassen des gepackten Elements ausgelöst. Das Element soll eine eindeutige Identifikationsnummer (ID) enthalten. Dies ist aus dem bestehenden \textit{IKC-Core} vorausgesetzt. Wird das Element nun innerhalb der Visualisierung losgelassen, enthält der ausgelöste \textit{Event} so auch diese ID. Diese kann zusammen mit dem \textit{Event} abgefangen und wiederverwendet werden. Beispielsweise können nun Informationen über den \textit{NodeInformationProvider} bezogen werden.
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -90,7 +90,7 @@ Die \textit{OperationService}-Schnittstelle ermöglicht der Visualisierung mit d
 
 Lesezugriffe erfolgen aber über den zuvor genannten \textit{NodeInformationProvider} (\autoref{listing:nodeinformationprovider}).
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -105,7 +105,7 @@ breaklines=true
 \subsection{View}
 Die \textit{View} ist eine Abstraktion der Visualisierung. Sie hält einerseits Informationen zu der einzelnen Sicht, welche Kanten und Knoten sind sichtbar. Andererseits ermöglichst sie auch das persistieren der Sicht. Dies erfolgt über eine \textit{JSON}-Repräsentation (\autoref{listing:view}).
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -156,7 +156,7 @@ breaklines=true
     \item \textit{detailComponenten}: Kind-Komponente für weitere Informationen
 \end{itemize}
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -180,7 +180,7 @@ Die \textit{GraphScreen}-Komponente sammelt alle Abhängigkeiten und repräsenti
     \item \textit{operationService}: Ermöglicht Interkation mit Datenbasis.
 \end{itemize}
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -194,7 +194,7 @@ breaklines=true
 
 In \autoref{listing:graphscreenexample} ist ein Beispiel für die Verwendung aufgezeigt. 
 
-\begin{listing}[H]
+\begin{listing}[htbp]
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -207,11 +207,9 @@ breaklines=true
 \end{listing}
 
 \section{Framework-Auswahl}
-Um sicherzustellen, dass ein geeignetes \textit{Framework} für die Visualisierung verwendet wird, müssen verschiedenen untersucht und bewertet werden.
+Um sicherzustellen, dass ein geeignetes \textit{Framework} für die Visualisierung verwendet wird, müssen verschiedene Optionen untersucht und bewertet werden.
 \subsection{Kriterien-Katalog}
-Für die Bewertung wird ein Katalog an Kriterien definiert, welcher sich an den definierten Anforderungen (siehe \autoref{anforderungen}), Risikoanalyse (siehe \autoref{risikoanalyse}), Schnittstellen (siehe \autoref{schnittstellen}) und Komponenten (siehe \autoref{komponenten}) orientiert. Folgend eine Übersicht über den Kriterienkatalog \autoref{tab:kriterien-katalog}. 
-
-Mit Hilfe dieses Katalogs sollen die Möglichkeiten, Chancen und auch Risiken der verschiedenen \textit{Frameworks} identifiziert werden. Aufgrund dieses Prozesses kann anschliessend eine genaue Einschätzung der Möglichkeiten und des Aufwands aufgestellt werden.
+Für die Bewertung wird ein Katalog an Kriterien definiert, welcher sich an den definierten Anforderungen (siehe \autoref{anforderungen}), Risikoanalyse (siehe \autoref{risikoanalyse}), Schnittstellen (siehe \autoref{schnittstellen}) und Komponenten (siehe \autoref{komponenten}) orientiert. Folgend eine Übersicht über den Kriterienkatalog (\autoref{tab:kriterien-katalog}). 
 
 \begin{longtable}{|p{1cm}| p{3cm} | p{8.1cm}|}
   \hline
@@ -248,8 +246,12 @@ Mit Hilfe dieses Katalogs sollen die Möglichkeiten, Chancen und auch Risiken de
   \item Die Erfüllung des Kriteriums ist mit diesem Framework nicht möglich.
 \end{enumerate}
 
-\subsection{Bewertung}
-Aufgrund des definierten Kriterien Kataloges wurden die verschiedenen \textit{Frameworks} nun untersucht und bewertet. Die Ergebnisse sind in der folgender \autoref{tab:framework-auswertung} aufgeführt.
+\subsection{Ergebnisse}
+Aufgrund des definierten Kriterienkataloges wurden die verschiedenen \textit{Frameworks} untersucht und bewertet. Die Ergebnisse sind in folgender \autoref{tab:framework-auswertung} aufgeführt. Die Tabelle widerspiegelt die Eindrücke und Erfahrungen, welche während den Untersuchen gemacht wurden:
+
+Zwar sind auch die umfassenderen Lösungen sehr interessant, jedoch ist deren Verwendung für den hier notwendigen Zweck zu kompliziert. Es würde lediglich ein kleiner Teilbereich der bereits bestehenden Lösung genutzt. Um aber diesen erfolgreich einzusetzen, ist dennoch tiefe Kenntnis des jeweiligen \textit{Frameworks} erforderlich. Dies sprengt schlichtweg den zeitlichen Rahmen und ist auch nicht notwendig. Die nötigen Erweiterungen können in den anderen, schlankeren \textit{Frameworks} ohne grossen Zusatzaufwand ergänzt werden.
+
+Darum fiel die Wahl eindeutig auf \textit{cytoscape.js}. Es beschränkt sich lediglich auf die Darstellung von Netzwerken. Erweiterungen sind bereits diverse zugänglich. Auch ist es gleichzeitig relativ einfach den Funktionsumfang eigenhändig zu ergänzen.
 
 \begin{longtable}{|p{0.8cm}| p{2.2cm} | p{1.5cm}| p{1.5cm}| p{2cm}| p{2cm}|}
   \hline
@@ -258,18 +260,19 @@ Aufgrund des definierten Kriterien Kataloges wurden die verschiedenen \textit{Fr
     \caption{Framework-Auswerung}
   \label{tab:framework-auswertung}
 \end{longtable}
-\todo[]{Entscheid ausformulieren + bewertung der Framework inkl. kleiner Text + Screenshoot}
-Eine detailierte Bewertung der verschiedenen \textit{Frameworks} kann den Abschnitten entnommen werden.
 
-\subsubsection{\textit{cytoscape.js}}
+\subsection{Bewertungen}\label{Bewertungen}
+Eine detaillierte Bewertung der fünf verschiedenen \textit{Frameworks} kann den folgenden Abschnitten entnommen werden.
+
+\subsubsection{cytoscape.js}
 \label{cytoscape}
 Cytoscape ist eine \textit{open-source} Javascript Bibliothek für Graphen- oder Netzwerk-Theorie. Sie eignet sich nicht nur für Visualisierungen, sondern auch für Analysen. Cytoscape ist mit allen gängigen Browsern und Bibliotheken kompatibel. Auch funktioniert die Darstellung ohne zusätzlichen Aufwand auf allen Bildschirmgrössen. Es gibt zahlreiche Erweiterungen und auch die Integration in bestehende Lösungen ist einfach möglich. \cite{1_franz_lopes_huck_dong_sumer_bader_2016}
 
 Wie in \autoref{fig:bsp-cytoscape} ersichtlich, beschränkt sich die Bibliothek lediglich auf die Visulisierung von Netzwerken. Standardmässig sind keine Zusatzfunktionen, beispielsweise das Interagieren mit \textit{Nodes} und \textit{Links} möglich. Im Gegenzug ist die Bibliothek sehr schlank gehalten, was eine einfache Integration und Erweiterung stark vereinfacht. Das Netzwerk wird direkt im \textit{JSON}-Format hinterlegt. Sollen Änderungen vorgenommen werde, werden die hinterlegten Daten angepasst und anschliessend angezeigt.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\textwidth]{cytoscape}
+\includegraphics[width=0.4\textwidth]{cytoscape}
 \caption{Beispiel Cytoscape}
 \label{fig:bsp-cytoscape}
 \end{figure}
@@ -283,12 +286,12 @@ Wie in \autoref{fig:bsp-cytoscape} ersichtlich, beschränkt sich die Bibliothek 
   \label{tab:bewertung-cytoscape}
 \end{longtable}
 
-\subsubsection{\textit{greuler}}
+\subsubsection{greuler}
 Hier gibt es viele Parallen zur vorgängigen Bibliothek (\autoref{cytoscape}). \textit{Greuler} spezialisert sich nun aber auf die Visualisierung, baut wie viele andere auf \textit{D3}. Bezüglich der Handhabung ist es grösstenteils identisch mit \textit{Cytoscape}, allerdings hat hier es bei weiten nicht so viele Erweiterungsmöglichkeiten. \autoref{fig:bsp-greuler} zeigt ein kleines Beispielnetzwerk. \cite{2_maurizzzio/greuler_2016}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\textwidth]{greuler}
+\includegraphics[width=0.4\textwidth]{greuler}
 \caption{Beispiel Greuler}
 \label{fig:bsp-greuler}
 \end{figure}
@@ -302,7 +305,7 @@ Hier gibt es viele Parallen zur vorgängigen Bibliothek (\autoref{cytoscape}). \
 \end{longtable}
 
 \subsubsection{JointJS}
-Auch bei JointsJS handelt es sich um eine \textit{open-source}-Bibliothek. Im Gegensatz zu den obigen beiden geht die Funktionalität einen Ebene weiter. Hier werden zusätzlich zur eigentlichen Darstellung auch Werkzeuge zur Manipulation des Diagramms mitgeliefert. Viele Funktionalitäten sind aber erst mit der kostenpflichten Version \textit{Rappid} verfügbar, welche auf JointJS aufbaut. \cite{jointsjs}
+Auch bei JointsJS handelt es sich um eine \textit{open-source}-Bibliothek. Im Gegensatz zu den obigen beiden geht die Funktionalität einen Ebene weiter. Hier werden zusätzlich zur eigentlichen Darstellung auch Werkzeuge zur Manipulation des Diagramms mitgeliefert. Viele Funktionalitäten sind aber erst mit der kostenpflichten Version \textit{Rappid} ver\-füg\-bar, welche auf JointJS aufbaut. \cite{jointsjs}
 
 Die Bibliothek ist für den hier vorliegenden Anwendungsfall zu umfangreich. Die vielen Funktionen machen die Implementation sehr komplex. Dieser Aufwand ist für die eigentliche einfache Anwendung übertrieben. Die Vorteile, welche der vorhandene Funktionsumfang und auch wirklich genutzt werden, können vergleichsweise schnell selbst implementiert werden. So ist die Übersicht stets vorhanden.
 
@@ -315,6 +318,8 @@ Die Bibliothek ist für den hier vorliegenden Anwendungsfall zu umfangreich. Die
 \end{longtable}
 
 \subsubsection{jsPlumb}
+
+\todo[]{Bewertung der Frameworks inkl. kleiner Text + Screenshoot}
 
 \begin{longtable}{|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.7cm}|p{0.7cm}|}
   \hline
@@ -334,5 +339,54 @@ Die Bibliothek ist für den hier vorliegenden Anwendungsfall zu umfangreich. Die
     \caption{Bewertung \textit{mxGraph}}
   \label{tab:bewertung-mxgraph}
 \end{longtable}
+
  
- \section{Design}
+\section{User Interface Design}
+
+Folgend werden wichtige Punkte zum Umgang mit dem Netzwerk und zur Integration der Visualisierung aufzeigt und weitergehende Überlegungen dazu dargelegt.
+
+\subsection{Umgang mit dem Netzwerk}
+
+Die Benutzeroberfläche orientiert sich hauptsächlich am Netzwerk bestehend aus Nodes und Links. Diese besitzen eine Beschriftung in Form des Titels, oder in Form des entsprechenden \textit{Tags} (\autoref{fig:nodes-links}). Diese können zugunsten der Übersichtlichkeit gegebenenfalls ausgeblendet werden.
+
+Wo immer möglich soll die Interaktion nicht über eine entfernte Schaltfläche, sondern direkt am jeweiligen Element in der Visualisierung geschehen. Ein mögliches Beispiel dafür zeigt \autoref{fig:node-menu}. Gleich beim Knoten, wo eine Aktion vorgenommen werden soll, kann mittels eines Klicks (oder Ähnlichem) ein Kontextmenü geöffnet werden. Dies ermöglicht der Situation entsprechende, weiterführende Funktionalitöten. Entsprechende Möglichkeiten sind auch beim Umgang mit Kanten vorstellbar.
+
+\begin{figure}[htbp]
+\centering
+ \begin{subfigure}{0.35\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{skizze-nodes-links}
+        \caption{Nodes und Links}
+        \label{fig:nodes-links}
+    \end{subfigure}
+ \begin{subfigure}{0.35\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{skizze-contextmenu}
+        \caption{Node-Menü}
+        \label{fig:node-menu}
+    \end{subfigure}
+    \caption{Skizzen Benutzeroberfläche}
+\end{figure}
+
+\subsection{Integration}
+
+Aus den Anforderungen geht die Interaktion mit dem \textit{ikc-core} als weiterer wichtiger Punkt hervor. Von besonderer Bedeutung ist hier die Bedienung mittels \textit{Drag and Drop}. Wie in \autoref{fig:grenze-core-visual} sichtbar, muss dabei die Grenze zwischen \textit{ikc-core} und der Visualisierung (grüne Linie) überwunden werden. Mittels \textit{Drag and Drop} kann also beispielweise ein Node aus der \textit{ikc-core}-Komponente (orange) in die Visualisierung positioniert werden. Dort kann dieser weiter mit dem bestehenden Netzwerk verknüpft oder als eigenständiger neuer Knoten dargestellt werden.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{ikc-core-visual}
+\caption{Grenze ikc core - visual}
+\label{fig:grenze-core-visual}
+\end{figure}
+
+Wo immer möglich sollen bestehende Komponenten wiederverwendet werden. Dies bietet sich nicht nur bei \autoref{fig:node-menu} in Form eines Kontextmenüs, sondern auch für die Suchfunktion und die Detailansicht an. Für die Desktop-Ansicht wird die Visualisierung mittig in einer dreispaltigen Anordnung in den \textit{ikc-core} eingebettet (\autoref{fig:3-column}). Auf der linken Seite befindet sich die Suche. Auf der rechten Seite die Detailansicht für den in der Visualisierung ausgewählten Node. Dort sind auch weitere Optionen beispielsweise in Form von Menüpunkten, den ausgehenden Link erreichbar. Zusätzlich gibt es eine übergeordnete Navigationsleiste, wo wichtige Funktion direkt abrufbar sind.
+
+Bei der Version für Tablets und Smartphones sind, je nach verfügbarer Breite, nur eine oder zwei Spalten sichtbar.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{integration-3-column}
+\caption{3-spaltige Oberfläche}
+\label{fig:3-column}
+\end{figure}
