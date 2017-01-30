@@ -1,7 +1,7 @@
 /**
- * Provides Information for visualization => connection to specific data structure
+ * Provides Information for visualization => connection to specific data structure. This has to be implemented to use this package.
  */
 export interface NodeInformationProvider {
-    getNodeTitle(ids: number[]): string[];
-    getNodeEdgesIds(id: number[]): number[];
+    getNodeTitle(id: string): string;
+    getLinkLabel(sourceId: string, linkId: string): string;
 }

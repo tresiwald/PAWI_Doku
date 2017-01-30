@@ -1,11 +1,9 @@
 /**
- * Process certain events in the specific datastructure
+ * Process certain events in the specific data structure. This has to be implemented to use this package.
  */
 export interface OperationService {
-    createNodes(ids: number[], labels: string[]): void;
-    createEdges(ids: number[], sources: number[], targets: number[], labels: string[]): void;
-    updateNodes(ids: number[], labels: string[]): void;
-    updateEdges(ids: number[], sources: number[], targets: number[], labels: string[]): void;
-    deleteNodes(ids: number[]): void;
-    deleteEdges(ids: number[]): void;
+    createNodeFromDialogState(state: DialogNewNodeState): void
+    createNodeWithLinkFromDialogState(state: DialogNewNodeToConnectState): void
+    createLink(id: string, source: string, target: string, label: string): void;
+    saveView(view: View): void;
 }

@@ -1,11 +1,53 @@
 \chapter{Schlussfolgerungen}
+Mit dem Abschluss dieser Arbeit wird ein Prototyp einer Visualisierung zur intuitiven Interaktion mit einem Wissensnetzwerk präsentiert. Dieser Prototyp wurde losgelöst von der Hauptapplikation (\gls{ikc-core}) entwickelt und kann als externes Software-Packet verwendet werden. Durch das Erfüllen aller Testfälle des Testkonzepts sind sämtliche Anforderungen erfüllt.
+
+Der Prototyp ermöglicht dem Benutzer ein besseres Verständnis und einfacheren Zugang zur Datenbasis des \gls{ikc-core}[s]. Zusätzlich wurde der Funktionsumfang erweitert: Mittels den neu eingeführten \gls{View}[s] kann ein \gls{Netzwerk} weiter unterteilt oder gar kontextuell gestaltet und dargestellt.
+%Durch diesen Prototyp ist es nun möglich die zugrundeliegende Datenbasis des \gls{ikc-core} für den Benutzer besser zugänglich zu machen. Weiter kann der Benutzer mittels verschiedener Views, seine Wissensnetzwerk unterteilen und situationsangepasst darstellen. 
 
 \section{Erkenntnisse}
+Während der Durchführung dieser Arbeit haben wir uns vertieft mit der Visualisierung von \gls{Netzwerk}[en] und deren Interaktion beschäftigt. Dabei haben wir folgenden Erkenntnisse gewonnen: 
 
-
+\begin{itemize}
+    \item Durch die Evaluationen der verschiedenen \gls{Framework}s zu Beginn der Arbeiten verschafften wir uns einen breiten Überblick über bestehenden Lösungen. Zum einen konnten wir ein \gls{Framework} auswählen, welches unseren Anforderungen bestmöglich entspricht. Zum anderen erlangten wir dadurch einen Einblick in verschiedene Implementierungen und deren Konzept der Problemlösung
+    %, im Bereich einer Netz\-werk-Vi\-su\-a\-li\-si\-er\-ung.
+    Dadurch erhielten wir bereits vor der tatsächlichen Implementation ein gutes Gespür für die Thematik und deren Umsetzung, was schlussendlich zu einer guten Ressourcenplanung und Aufwandsschätzung führte. 
+    \item Das \hyperref[cytoscape]{cytoscape}-\gls{Framework} überzeugt uns für die Visualisierung von \gls{Netzwerk}[en]: Es bietet eine Vielzahl von Erweiterungen, welche zusätzliche Funktionalität zur Verfügung stellen. Diese sind eigentlich für die Visualisierung von \gls{Netzwerk}[en] aus der Biologie %(zum Beispiel die Auswirkungen der Existenz von verschiedenen Genen) 
+    gedacht. Welches nicht unserem Anwendungsfall entspricht. Trotzdem konnten wir verschiedene Konzepte davon aufgreifen und somit unsere Lösung zu modellieren. 
+    \item Die Darstellung von \gls{Netzwerk}[en] und deren Interaktion wird schnell unübersichtlich. Insbesondere, falls \gls{Link}[s] in beide Richtungen existieren oder dadurch Schleifen über mehrere Ebenen entstehen.
+    \item Auch die Interaktion mit einem \gls{Netzwerk} gestaltet sich schwieriger als erwartet. Beispielsweise erweist sich das Zuklappen von \gls{Link}[s] als ein Vorgang mit diversen Abhängigkeiten: Gibt es mehrere \gls{Link}[s] an einem \gls{Node}, wird anders reagiert als wenn nur ein \gls{Link} oder keiner existiert. Somit können gleiche Aktionen je nach \gls{Netzwerk}-Kontext unterschiedliche Resultate ergeben.
+    \item Die Verwendung auf mobilen Geräten mit kleinem Bildschirmen erfordert besondere Beachtung. Dabei müssen Aktionen für den Benutzer möglichst einfach erreichbar sein und gleichzeitig darf die Applikation nicht überladen wirken. Die Bedienung mit den Fingern hat andere Anforderungen als eine Bedienung mit der Maus und Tastatur.
+    \item Die Interaktion mit einer Benutzeroberfläche kann bereits vor der Implementierung konzeptionell genau geplant werden. Die Missachtung von kleinen Details kann unter Umständen später zu Unklarheiten und erheblichem Zusatzaufwand führen.
+    %Definitionen von der Benutzung einer Applikation sind essentiell für die nachfolgende Implementierung. Dabei verursachen die Missachtung von kleinen Details in der Konzeption oft grosse Unklarheiten, welche mit einer exakten Definition verhindert werden kann.    
+\end{itemize}
 
 \section{Lessons learned}
-
-
+Basierend auf den Erkenntnissen und der Reflexion unserer Arbeit, sind die folgenden Punkte, die wichtigsten Schlüsse, welche wir aus dem Modul mitnehmen:
+\begin{itemize}
+    \item Die Anforderungen an die Benutzeroberfläche und deren Bedienung müssen möglichst früh genau festgelegt werden. Obwohl wir dies zum Teil gemacht haben, tauchten im Laufe der Entwicklung diverse Unklarheiten auf. Mit detaillierteren Anforderungen und genaueren Modellen, hätten diese vermieden werden können.
+    %hätten wir, mit einem höheren Detailgrad, Unklarheiten in der Implementierung vermeiden können.
+    \item Durch das punktuelle Ein- und Ausblenden der Beschriftungen von \gls{Link}[s] kann die Übersichtlichkeit in grossen Netzwerken zusätzlich erhöht werden. 
+    %Da die Übersichtlichkeit mit der Grösse des \gls{Netzwerk}[s] stark abnimmt, kann durch das punktuelle Ein- und Ausblenden der \gls{Link}-Labels diese erhöht werden.
+    \item Die vom \gls{ikc-core} losgelöste Entwicklung erzwang eine komplett eigenständige Entwicklung gleich von Beginn an. Dadurch war eine lose Kopplung und gleichzeitige hohe Kohäsion stets gewährleistet.
+    %Durch die Entwicklung des Prototypen, losgelöst vom gls{ikc-core}, waren wir gezwungen die Archtektur und unsere Arbeitsweise einer möglichst geringen Kopplung und einer starker Kohäsion zu unterstellen. 
+    \item Aufgrund der internationalen Projektorganisation musste den Methoden und den Mittel für eine Kollaboration besondere Beachtung geschenkt werden. Mit den angegebenen Hilfsmitteln funktionierte dies ausgezeichnet. Trotz den gegebenen Um\-ständ\-en war eine enge Zusammenarbeit und ein ständiger Austausch stets gegeben. Sehr hilfreich waren dabei auch Bildschirmaufzeichnungen. Die grösste Herausforderung stellte sicherlich die zeitlichen Koordinaten dar. Besprechungen wurden darum mög\-lich\-st regelmässig zu fixen Zeiten abgehalten.
+    
+    Die Auslastung konnte stets gut der aktuellen Situation angepasst werden. So konnten sich Andreas Waldis im Dezember und Patrick Siegfried im Januar praktisch ausschliesslich den Prüfungen widmen. Auch konnte an Teile der Arbeit gut unabhängig gearbeitet werden, sodass der Arbeits-Fortschritt trotz zeitweiser intensiver Auslastung nie ausblieb. Eine Erleichterung war die Erweiterung des Zeitrahmens seitens der HSLU. Dadurch war es einfacher möglich die Arbeit trotz den unterschiedlichen Semesterterminen erfolgreich abzuschliessen.
+    %Durch die Zusammenarbeit zwischen Amerika und der Schweiz über weite Dauer der Arbeit, musste einen besonderen Stellenwert auf Methoden und Mittel der Zusammenarbeit gelegt werden. Dies funktionierte vor allem durch die Verwendung der verschiedenen Hilfsmittel sehr gut. Hilfreich war insbesondere die enge Zusammenarbeit und der Austausch ausserhalb dieser Arbeit. So bestand ein ständiger Informationsfluss welcher nicht mit grossem Aufwand aufrechterhalten werden musste. Die grösste Herausforderung war dabei die zeitliche Koordination von Besprechungen und Ressourcenplanung. So wurden fix Termine in einen zeitlich normierten Kalender eingetragen und Auslastung entsprechend der aktuellen Situation angepasst. So konnte sich Andreas Waldis im Dezember auf seine Abschlussprüfungen konzentrieren und Patrick Siegfried betrieb einen grösseren Aufwand. Nach der Rückkehr von Amerika konnte dann die Situation umgekehrt werden, da Patrick Siegfried im Januar mit seinen Prüfungen beschäftigt war. Ebenfalls war es eine grosse Hilfe, dass der Zeitraum der Arbeit um einen Monat von der HSLU erweitert wurde. 
+\end{itemize}
 
 \section{Ausblick}
+Der präsentierte Prototyp erfüllt die Anforderungen und ist in den \gls{ikc-core} integriert. Jedoch gibt es verschiedene mögliche Optimierungen:
+\begin{itemize}
+    \item Mit Hilfe der Erweiterung \textit{cytoscape.js-undo-redo} können Operationen rückgängig gemacht werden. Dies könnte zum Beispiel eine nutzliche Funktion sein, um versehentlich gelöschte Elemente wiederherzustellen. \citep{cytoscape-js-undo-redo}.
+    \item Beim Hinzufügen eines neuen \gls{Node}[s] wird dieser automatisch zufällig unter dem Eltern-\gls{Node} angezeigt. Dies kann problematisch werden, falls exakt an dieser Stelle bereits ein \gls{Node} angezeigt wird. Dies könnte verhindert werden, indem die Positionen aller bereits angezeigten Nodes berücksichtigt würde.
+    %Aktuell wird die Position eines \gls{Node}[s] zufällig unter dem Eltern \gls{Node} berechnet. So kann es sein das dieser Stelle bereits ein anderer \gls{Node} oder \gls{Link} dargestellt wird. Dies könnte verhindert werden mit der Berücksichtigung aller bereits dargestellten \gls{Node}[s] in der Positionsberechnung. 
+    \item Durch die Verwendung von verschiedenen Farben, Formen und Grössen wäre es möglich \gls{Node}[s] unterschiedlicher grafisch zu differenzieren, und so unterschiedliche \gls{Node}-Typen sichtbar hervorzuheben. Die Erweiterung \textit{cytoscape.js-supportimages} würde eine Einbindung von Piktogrammen ermöglichen. \citep{cytoscape-js-supportimages}.
+    \item Die Erweiterung \textit{js-cytoscape-navigator} zeigt eine Übersicht über das dargestellte Netzwerk an. Der Vorteil ist vor allem die erhöhte Übersicht in grossen \gls{Netzwerk}[en].
+    %Mit einer kleine Übersicht über dem dargestellten Netzwerk, würde die Übersicht auf kleinen Monitoren zunehmen. Dies wird durch die Erweiterung \textit{js.cytoscape-navigator} angeboten \citepp{js.cytoscape-navigator}. 
+    \item Die Erweiterung \textit{cytoscape.js-clipboard} bietet 'Copy-Paste'-Funk\-tio\-na\-li\-tät. Damit könnten Teile einer \gls{View} wiederverwendet werden. \citep{cytoscape-js-clipboard}.
+    \item Eine denkbare Erweiterung ist eine automatische Generierung von \gls{View}[s]. Diese würde dem Benutzer eine Übersicht über sein Wissen bieten. Es ist vorstellbar, dass er bestimmte Parameter, beispielsweise die Tiefe des darzustellenden Netzwerks von einem gewählten Ausganspunkt aus, beeinflussen kann. 
+    %Mit Hilfe von automatischer Generierung von Visualisierung könnte einem Benutzer einfach eine Übersicht über die Umgebung eines \gls{Node}[s] gewährt werden. So ist es Vorstellbar, bei Bedarf eine \gls{View} zu generieren, welche einen ausgewählten \gls{Node} und alle \gls{Node}[s] welche über n-Ebenen verbunden sind.
+    \item \hyperref[cytoscape]{cytoscape} hat seine Ursprünge in der \gls{Netzwerk}-Theorie. Darum bietet es neben der Darstellung auch diverse Algorithmen an. Dazu gehören beispielsweise bekannte Algorithmen \textit{Dijkstra} oder auch \textit{A*}. \citep{cytoscape-js}
+    %\hyperref[cytoscape]{cytoscape} bietet neben der ganzen Visualisierung auch eine Struktur um \gls{Node}[s] und \gls{Link}[s] strukturiert zu halten und entsprechende Operation. Dazu gehören verschieden Algorithmen welche für Graphen und Netzwerken bekannt sind. So zum Beispiel \textit{Dijkstra} oder \textit{A*} \citep{cytoscape.js}.
+    \item Ab einer gewissen \gls{Node}-Titellänge wird die Darstellung un\-gün\-stig. Der Titel ragt über die jeweilige Komponente. Dies könnte einfach mit \gls{CSS} oder \gls{Javascript} gelöst werden.
+\end{itemize}

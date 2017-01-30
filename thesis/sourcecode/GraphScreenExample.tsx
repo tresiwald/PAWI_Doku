@@ -1,27 +1,37 @@
-let view: View = new ViewImpl(...);
+let viewToLoad: View = new View(...);
 
-let onViewSave: Function = (() => {
-   ... 
+let nodeTypes: GraphNodeType[] = [...];
+
+let timestamp: string = ...;
+
+let onNodeDetailRequested: Function = ((nodeId:string) => {
+   ...
 });
 
-let onViewDelete: Function = (() => {
-   ... 
-});
 
-let nodeComponentFactory: NodeComponentFactory =
-    new NodeComponentFactoryImpl(...);
-    
 let nodeInformationProvider: NodeInformationProvider = 
     new NodeInformationProviderImpl(...);
     
 let operationService: OperationService = 
-    new OperationService(...);
+    new OperationServiceImpl(...);
     
-<GraphScreen
-    viewToLoad={...}
-    onViewSave={...}
-    onViewDelete={...}
-    nodeComponentFactory={...}
-    nodeInformationProvider={...}
+let dialogFactory: DialogFactory = 
+    new DialogFactoryImpl(...);
+    
+let searchFieldFactory: SearchFieldFactory = 
+    new SearchFieldFactoryImpl(...);
+    
+let identityService: IdentityService = 
+    new IdentityServiceImpl(...);
+
+<GraphScreen nodeInformationProvider={nodeInformationProvider}
+             operationService={operationService}
+             viewToLoad={viewToLoad}
+             timestamp={timestamp}
+             dialogFactory=dialogFactory}
+             searchFieldFactory={searchFieldFactory}
+             onNodeDetailRequest={onNodeDetailRequested}
+             nodeTypes={nodeTypes}
+             identityService={identityService}
 />
     
