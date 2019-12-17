@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2019-12-17T09:55:04.564Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" etag="h07Z0dX-_I-tPgTI6Eom" version="12.4.2" type="github" pages="1">
+<mxfile host="www.draw.io" modified="2019-12-17T10:24:11.891Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" etag="0z6aPBPb65k4fTu0Rumi" version="12.4.2" type="github" pages="1">
   <diagram id="zPelnRNBr2Svsb52nRgV" name="Page-1">
     <mxGraphModel dx="5261" dy="1208" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
       <root>
@@ -54,10 +54,10 @@
         <mxCell id="fnUOQmmtGGZMYpf0WwbB-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;strokeWidth=2;" parent="1" source="fnUOQmmtGGZMYpf0WwbB-18" target="fnUOQmmtGGZMYpf0WwbB-1" edge="1">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="fnUOQmmtGGZMYpf0WwbB-18" value="Input" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="fnUOQmmtGGZMYpf0WwbB-18" value="Input Layer" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="-270" y="405" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="fnUOQmmtGGZMYpf0WwbB-19" value="Outputs" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="fnUOQmmtGGZMYpf0WwbB-19" value="Output Layers" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="-270" y="165" width="220" height="40" as="geometry"/>
         </mxCell>
         <mxCell id="fnUOQmmtGGZMYpf0WwbB-36" value="" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=18;" parent="1" vertex="1">
