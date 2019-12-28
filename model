@@ -1,6 +1,6 @@
-<mxfile host="www.draw.io" modified="2019-12-28T12:49:42.687Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" etag="ZP5plvcvYCRd9pbH30Ux" version="12.4.7" type="github">
+<mxfile host="www.draw.io" modified="2019-12-28T12:58:32.124Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" etag="YgE4Vz4tpg4dDnIh9buK" version="12.4.7" type="github">
   <diagram id="zPelnRNBr2Svsb52nRgV" name="Page-1">
-    <mxGraphModel dx="4242" dy="2880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="3962" dy="2717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -4323,7 +4323,7 @@
         <mxCell id="NTKi74lEXDiWkfRnmD26-203" value="&lt;b style=&quot;white-space: nowrap&quot;&gt;$$\hat{y}^{(\textbf{i})}_\textbf{6}$$&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="-1630" y="3082.23" width="70.12" height="26.21" as="geometry"/>
         </mxCell>
-        <mxCell id="NTKi74lEXDiWkfRnmD26-204" value="&lt;b style=&quot;white-space: nowrap&quot;&gt;$$y^{(\textbf{i})}_\textbf{8}$$&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;spacingLeft=2;" vertex="1" parent="1">
+        <mxCell id="NTKi74lEXDiWkfRnmD26-204" value="&lt;b style=&quot;white-space: nowrap&quot;&gt;$$y^{(\textbf{i})}_\textbf{7}$$&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;spacingLeft=2;" vertex="1" parent="1">
           <mxGeometry x="-1550" y="3082.23" width="20" height="26.21" as="geometry"/>
         </mxCell>
         <mxCell id="NTKi74lEXDiWkfRnmD26-222" value="&lt;b&gt;Predicted Concepts&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
