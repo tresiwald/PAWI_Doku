@@ -1,10 +1,10 @@
-<mxfile host="www.draw.io" modified="2020-01-17T09:11:10.161Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36" etag="eGhCNOzz54ZKA1X0A1O-" version="12.5.5" type="github">
+<mxfile host="www.draw.io" modified="2020-01-22T08:47:07.649Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36" etag="wHR5regvNUKUmMkMFGG7" version="12.5.5" type="github">
   <diagram id="zPelnRNBr2Svsb52nRgV" name="Page-1">
-    <mxGraphModel dx="9152" dy="4530" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="7927" dy="3898" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
-        <mxCell id="g88OHpKGlEEd3QutuRUd-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;" vertex="1" parent="1">
+        <mxCell id="g88OHpKGlEEd3QutuRUd-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;" parent="1" vertex="1">
           <mxGeometry x="910" y="-335" width="430" height="165" as="geometry"/>
         </mxCell>
         <mxCell id="6C41_HL855vhZ1FU4yr4-81" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;dashed=1;dashPattern=1 1;endArrow=none;endFill=0;strokeWidth=2;fontSize=21;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" source="6C41_HL855vhZ1FU4yr4-15" edge="1">
@@ -3779,8 +3779,8 @@
             <mxPoint x="-601.5599999999995" y="2616.7200000000003" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="NTKi74lEXDiWkfRnmD26-62" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-724" y="2586.72" width="123.44" height="20" as="geometry"/>
+        <mxCell id="NTKi74lEXDiWkfRnmD26-62" value="&lt;b&gt;Tagging Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-711" y="2586.72" width="123.44" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="NTKi74lEXDiWkfRnmD26-63" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-711.5599999999995" y="2625.9300000000003" width="115" height="20" as="geometry"/>
@@ -4041,8 +4041,8 @@
             <mxPoint x="-1399.9999999999995" y="2480.0000000000005" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="NTKi74lEXDiWkfRnmD26-136" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-1523" y="2450" width="125" height="20" as="geometry"/>
+        <mxCell id="NTKi74lEXDiWkfRnmD26-136" value="&lt;b&gt;Tagging Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-1507" y="2450" width="125" height="20" as="geometry"/>
         </mxCell>
         <mxCell id="NTKi74lEXDiWkfRnmD26-137" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-1509.9999999999995" y="2489.2100000000005" width="115" height="20" as="geometry"/>
@@ -5525,16 +5525,16 @@
             <mxPoint x="-1599.430000000001" y="-1836.29" as="sourcePoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="g88OHpKGlEEd3QutuRUd-1" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="g88OHpKGlEEd3QutuRUd-1" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-1210" y="-594.6" width="135" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="g88OHpKGlEEd3QutuRUd-2" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="g88OHpKGlEEd3QutuRUd-2" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-1192.25" y="-553.39" width="115" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="g88OHpKGlEEd3QutuRUd-7" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="g88OHpKGlEEd3QutuRUd-7" value="&lt;b&gt;Classification Layers&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-2340.18" y="88.00000000000001" width="135" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="g88OHpKGlEEd3QutuRUd-8" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="g88OHpKGlEEd3QutuRUd-8" value="&lt;b&gt;Sequence Layer&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-2322.43" y="129.21000000000004" width="115" height="20" as="geometry"/>
         </mxCell>
       </root>
